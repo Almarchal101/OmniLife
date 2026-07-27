@@ -18,10 +18,12 @@ class User(BaseModel):
     
     name = Column(String(50), nullable = False)
     lastname = Column(String(50), nullable = False)
+    username = Column(String(100), nullable =False, unique = True)
     age = Column(Integer, nullable = False)
     email = Column(String(140), nullable = False, unique = True)
     gender = Column(String, nullable = True)
     phone_number = Column(String(14), nullable = True, unique = True)
+    hased_password = Column(String, nullable = False, unique = True)
     
     
     

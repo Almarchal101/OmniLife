@@ -23,7 +23,7 @@ class User(BaseModel):
     email = Column(String(140), nullable = False, unique = True)
     gender = Column(String, nullable = True)
     phone_number = Column(String(14), nullable = True, unique = True)
-    hased_password = Column(String, nullable = False, unique = True)
+    hashed_password = Column(String, nullable = False, unique = True)
     
     
     

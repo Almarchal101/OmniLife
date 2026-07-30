@@ -1,8 +1,9 @@
 from fastapi import APIRouter, Depends
-from schemas.user_schemas import UserOut, CreateUser
+from schemas.user_schemas import UserOut, CreateUser, Token, Authenticate_data
 from sqlalchemy.orm import session
 from core.database import get_db
-from crud.user_crud import register_user
+from crud.user_crud import register_user, authenticate_user
+from pydantic import EmailStr
 
 user_api_router = APIRouter(prefix = "/user")
 
@@ -10,3 +11,8 @@ user_api_router = APIRouter(prefix = "/user")
 @user_api_router.post("/create", response_model = UserOut)
 def create_user(user: CreateUser, db: session = Depends(get_db)):
     return register_user(db, user)
+
+
+@user_api_router.post("/login", response_model = Token)
+def login_user(user: Authenticate_data, db: session = Depends(get_db)):
+    return authenticate_user(user, db)

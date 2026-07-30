@@ -16,3 +16,12 @@ class UserOut(BaseModel):
     lastname : str
     username: str
     
+class Authenticate_data(BaseModel):
+    email: EmailStr
+    password: str
+    
+    
+class Token(BaseModel):
+    access_token: str
+    refresh_token: str
+    token_type: str = "bearer"

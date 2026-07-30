@@ -5,8 +5,13 @@ from datetime import datetime, timedelta, timezone
 from core.config import settings
 import jwt
 import uuid
+from fastapi import HTTPException, status, Depends
+from core.database import get_db
+
+
+
 password_hash = PasswordHash.recommended()
-from fastapi import HTTPException, status
+
 
 
 #genererar en unik id med 32 bitar hexal som används som id for user och andra element 
@@ -88,8 +93,9 @@ def decode_token(token: str, expected_type: str = None) -> dict:
                 detail = "Invalid token"
                 
             )
-    
-    
+
+
+
     
 
 

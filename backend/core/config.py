@@ -1,5 +1,8 @@
 from pydantic_settings import SettingsConfigDict, BaseSettings
 from pydantic import SecretStr
+from fastapi.security import OAuth2PasswordBearer
+from typing import ClassVar
+
 
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(
@@ -7,6 +10,8 @@ class Settings(BaseSettings):
         env_file_encoding= "utf-8"
     )
     
+    DATABASE_URL: str
+    oauth2_scheme: ClassVar = OAuth2PasswordBearer(tokenUrl="token")
     jwt_secret_key : SecretStr
     jwt_algorithm : str = "HS256"
     access_token_expire_minutes: int = 30
@@ -14,4 +19,3 @@ class Settings(BaseSettings):
     
     
 settings = Settings()
-     

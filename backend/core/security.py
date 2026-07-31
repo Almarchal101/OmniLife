@@ -1,12 +1,11 @@
 from ulid import ULID
-from sqlalchemy.orm import Session
 from pwdlib import PasswordHash
 from datetime import datetime, timedelta, timezone
 from core.config import settings
 import jwt
 import uuid
-from fastapi import HTTPException, status, Depends
-from core.database import get_db
+from fastapi import HTTPException, status
+
 
 
 

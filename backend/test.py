@@ -159,7 +159,7 @@ def refresh_user_access_token():
 
 
 refresh_user_access_token()
-  
+logout_user()  
     
     
     
